@@ -1,0 +1,14 @@
+{
+    "name": "Elm-Electron-SQLite3",
+    "version": "0.0.1",
+    "main": "main.js",
+    "devDependencies": {
+        "electron-rebuild": "^1.8.2"
+    },
+    "description": "An example for Elm with Electron and SQLite3",
+    "license": "MIT",
+    "dependencies": {
+        "electron": "3.0.10",
+        "sqlite3": "^4.0.4"
+    }
+}

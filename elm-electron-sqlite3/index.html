@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Elm-Electron-SQLite3</title>
+<script type="text/javascript" src="./elm.js"></script>
+</head>
+
+<body>
+<h1>Hello, electron!</h1>
+<div id="elm-node"></div>
+</body>
+
+<script type="text/javascript">
+    var app = Elm.Main.init({node: document.getElementById("elm-node")});
+    var sqlite3 = require('sqlite3').verbose();
+    var db = new sqlite3.Database('example.db');
+
+    app.ports.execQuery.subscribe((sql) => {
+        db.all(sql, [], (err,rows) => {
+            if (err) {
+                app.ports.resultSet.send(JSON.stringify(err));
+            } else {
+                app.ports.resultSet.send(JSON.stringify(rows));
+            }
+        });
+    });
+</script>
+
+</html>
